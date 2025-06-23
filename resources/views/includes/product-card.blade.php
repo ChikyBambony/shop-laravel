@@ -24,8 +24,16 @@
                 ${{$product->price}}
             </div>
             <div class="product-links">
-                <a href="#" class="btn btn-outline-secondary add-to-cart"><i
-                        class="fas fa-shopping-cart"></i></a>
+                <button wire:click = "add2Cart({{$product->id}})" wire:loading.attr="disabled" class="btn btn-outline-secondary add-to-cart">
+                    <div wire:loading.remove wire:target="add2Cart({{$product->id}})">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div wire:loading wire:target="add2Cart({{$product->id}})">
+                        <div class="spinner-border spinner-border-sm" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </button>
             </div>
         </div>
     </div>
