@@ -23,6 +23,17 @@ trait CartTrait
             $this->js("toastr.error('Product don't added to cart')");
         }
     }
+    public function removeFromCart(int $productId)
+    {
+        if (Cart::removeProductsFromCart($productId)) {
+            $this->js("toastr.success('Product removed from cart')");
+            $this->dispatch('cart-updated');
+        } else {
+            $this->js("toastr.error('Product don't removed from cart')");
+        }
+    }
+
+
 }
 
 
